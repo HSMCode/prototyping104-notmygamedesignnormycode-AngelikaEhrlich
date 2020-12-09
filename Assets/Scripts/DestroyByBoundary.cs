@@ -11,20 +11,26 @@ public class DestroyByBoundary : MonoBehaviour
     private void Start()
     {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        if(gameControllerObject != null)
+        if (gameControllerObject != null)
         {
             gameController = gameControllerObject.GetComponent<GameController>();
         }
-        if(gameController == null)
+        if (gameController == null)
         {
             Debug.Log("Cannot find 'GameController' script");
         }
     }
 
-    //Destroy on boundary exit and add points
+
+    //Destroy on boundary exit and add points 
+    //but before check if it is a falling object not the player (bug fixed)
     private void OnTriggerExit(Collider other)
     {
-        Destroy(other.gameObject);
-        gameController.AddScore(scoreValue);
+        if (!other.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);
+            gameController.AddScore(scoreValue);
+        }
     }
+
 }

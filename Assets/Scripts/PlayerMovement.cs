@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(movement);
 
-        // Map Boundaries
+        //Map Boundaries
         if(transform.position.x < -screenSize.x)
         {
             transform.position = new Vector2(-screenSize.x, transform.position.y);
