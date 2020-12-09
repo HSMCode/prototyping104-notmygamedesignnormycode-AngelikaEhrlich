@@ -23,13 +23,16 @@ public class Obstacle : MonoBehaviour
             {
                 return;
             }
-
-            // Add explosion particle upon death, stop game, destroy obstacle and player, access GameOver-function
-            Instantiate(playerExplosion, transform.position, transform.rotation);
-            Time.timeScale = 0;
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            gameController.GameOver();
-
+        
+            //only gameOver if obstacle hits the player not another item
+            if (!other.CompareTag("Item"))
+            {
+                // Add explosion particle upon death, stop game, destroy obstacle and player, access GameOver-function
+                Instantiate(playerExplosion, transform.position, transform.rotation);
+                Time.timeScale = 0;
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                gameController.GameOver();
+            }
         }
 }

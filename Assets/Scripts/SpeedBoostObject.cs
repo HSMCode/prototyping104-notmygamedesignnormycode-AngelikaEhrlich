@@ -22,21 +22,33 @@ public class SpeedBoostObject : MonoBehaviour
         if(transform.position.y < -20)
         {
             //move object back to the top of the screen, give new random x coordinate and new random speed
-            
-            //generate random x coordinate
-            float randomNumber = Random.Range (-3.65f,3.65f);
-            //make new Vector3 to store the new position for object to move to
-            Vector3 newPos = new Vector3(randomNumber,20,0);
-            //move object to new position
-            transform.position = newPos;
-            //give object new random speed
-            speed = Random.Range(5, 15);
+            MoveToTop();
         }
+    }
+
+    void MoveToTop()
+    {
+        //generate random x coordinate
+        float randomNumber = Random.Range(-3.65f, 3.65f);
+        //make new Vector3 to store the new position for object to move to
+        Vector3 newPos = new Vector3(randomNumber, 20, 0);
+        //move object to new position
+        transform.position = newPos;
+        //give object new random speed
+        speed = Random.Range(5, 15);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("we hit something");
+        //check to see if the other object was not a falling object 
+        if(!other.CompareTag("Boundary"))
+        {
+            if(!other.CompareTag("Hazard"))
+            {
+                //move object back to the top of the screen, give new random x coordinate and new random speed
+                MoveToTop();
+            }
+        }
     }
 
 }
