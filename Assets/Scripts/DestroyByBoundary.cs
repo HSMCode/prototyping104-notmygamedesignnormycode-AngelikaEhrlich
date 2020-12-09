@@ -28,8 +28,11 @@ public class DestroyByBoundary : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-            gameController.AddScore(scoreValue);
+            if (!other.CompareTag("Item"))
+            {
+                Destroy(other.gameObject);
+                gameController.AddScore(scoreValue);
+            }
         }
     }
 
