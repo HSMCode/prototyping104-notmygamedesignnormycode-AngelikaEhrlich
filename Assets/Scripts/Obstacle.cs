@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour
             }
         
             //only gameOver if obstacle hits the player not another item
-            if (!other.CompareTag("Item"))
+            if (!other.CompareTag("SpeedBoost"))
             {
                 // Add explosion particle upon death, stop game, destroy obstacle and player, access GameOver-function
                 Instantiate(playerExplosion, transform.position, transform.rotation);

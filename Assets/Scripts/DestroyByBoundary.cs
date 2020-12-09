@@ -28,7 +28,7 @@ public class DestroyByBoundary : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
         {
-            if (!other.CompareTag("Item"))
+            if (!other.CompareTag("SpeedBoost"))
             {
                 Destroy(other.gameObject);
                 gameController.AddScore(scoreValue);

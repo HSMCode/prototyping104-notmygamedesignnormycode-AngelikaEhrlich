@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boundary
-  - Item
+  - Hazard
+  - SpeedBoost
   layers:
   - Default
   - TransparentFX
